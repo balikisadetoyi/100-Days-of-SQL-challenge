@@ -1,0 +1,43 @@
+--I solved questions on the codechef website for day 36
+
+
+--Write a query to retrieve the author_id, author_name, and publication_name for authors whose articles got zero views.
+--The result should be sorted by author_id in ascending order.
+
+--Return the result table sorted by id in ascending order.
+SELECT 
+    author_id,
+    author_name,
+    publication_name
+FROM Views
+WHERE view_count=0
+ORDER BY author_id ASC
+
+
+--Write a query to find the names of the top 3 distinct players by highest score who have won matches, including their scores.
+SELECT DISTINCT 
+  p.player_name, 
+  p.score
+FROM Players AS p
+JOIN Matches AS m
+ON m.winner = p.player_name
+ORDER BY p.score DESC
+LIMIT 3;
+
+--Write a query to retrieve the details of the last five matches played, 
+--including the match ID, the names of the players who participated, 
+--the name of the winning player, match date, and the final score of the winner.
+
+select  
+    m.match_id,
+    m.player_1,
+    m.player_2,
+    m.Winner,
+    m.match_date,
+    p.Score
+FROM Matches as m
+JOIN Players AS P 
+ON M.winner=p.player_name
+ORDER BY m.match_date desc
+LIMIT 5
+
